@@ -75,23 +75,7 @@ local AutoAttackToggle = Y.Toggle({
     Enabled = false
 })
  
- local autoDigActive = false
- 
-local autoDigActive = Y.Toggle({
-    Text = "Auto Dig",
-    Callback = function(Value)
-       autoDigActive = Value
-        if Value then
-            spawn(function()
-                while autoDigActive do
-                  game:GetService("ReplicatedStorage").Packages._Index["sleitnick_comm@0.3.1"].comm.Client
-                    wait()
-                end
-            end)
-        end
-    end,
-    Enabled = false
-})
+
  
 local autoGiftActive = false
  
