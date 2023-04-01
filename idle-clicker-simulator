@@ -1,0 +1,241 @@
+
+
+--Created by Tattou38#1236
+ 
+ 
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+local TweenService = game:GetService('TweenService')
+local Basic = "Basic"
+local Dead = "Dead"
+local Cosmic = "Cosmic"
+local Earth = "Earth"
+local Lava = "Lava"
+local Ocean = "Ocean"
+local Sand = "Sand"
+local Rare = "Rare"
+local Robux = "Robux"
+local BeachDragon = "Beach Dragon"
+local WaterMenace = "Water Menace"
+local Sweet = "Sweet"
+local Glacier = "Glacier"
+local Jungle = "Jungle"
+ 
+local Earth = "1" 
+local Beach = "2" 
+local Magma = "3" 
+local Corail = "4" 
+local Cimtiere = "5"
+local Extraterrestre = "6"
+local Candy  = "7"
+local Snow = "8"
+local Forest = "9" 
+ 
+ 
+ 
+ 
+ 
+local X = Material.Load({
+    Title = "EL Tattou Hub",
+    Style = 2,
+    SizeX = 300,
+    SizeY = 350,
+    Theme = "Light",
+    ColorOverrides = {
+        MainFrame = Color3.fromRGB(0,0,0),
+        Toggle = Color3.fromRGB(124,37,255),
+        ToggleAccent = Color3.fromRGB(255,255,255), 
+        Dropdown = Color3.fromRGB(124,37,255),
+        DropdownAccent = Color3.fromRGB(255,255,255),
+        Slider = Color3.fromRGB(124,37,255),
+        SliderAccent = Color3.fromRGB(255,255,255),
+        NavBarAccent = Color3.fromRGB(0,0,0),
+        Content = Color3.fromRGB(0,0,0),
+    } 
+})
+ 
+local Y = X.New({
+    Title = "Main"
+})
+ 
+local autoFarmActive = false
+ 
+local AutoAttackToggle = Y.Toggle({
+    Text = "EL Auto Attacko",
+    Callback = function(Value)
+        autoFarmActive = Value
+        if Value then
+            spawn(function()
+                while autoFarmActive do
+                    game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.GameService.RE.Click:FireServer()
+                    wait()
+                end
+            end)
+        end
+    end,
+    Enabled = false
+})
+ 
+ 
+ 
+local autoGiftActive = false
+ 
+local autoGiftActive = Y.Toggle({
+    Text = "Colect all gift",
+    Callback = function(Value)
+        autoGiftActive = Value
+        if Value then
+            spawn(function()
+                while autoGiftActive do
+game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.PlayerService.RF.ClaimGift:InvokeServer(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+ 
+                    wait()
+                end
+            end)
+        end
+    end,
+    Enabled = false
+})
+ 
+ 
+local autoCodeActive = false
+ 
+local autoCodeActive = Y.Toggle({
+    Text = "Colect all Codes",
+    Callback = function(Value)
+        autoCodeActive = Value
+        if Value then
+            spawn(function()
+                while autoCodeActive do
+game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.CodeService.RF.Enter:InvokeServer("5KLIKES", "ILUVGEMS", "500LIKES")
+ 
+                    wait()
+                end
+            end)
+        end
+    end,
+    Enabled = false
+})
+ 
+ 
+ 
+local T = X.New({
+    Title = "Oeufs"
+})
+ 
+local eggType = Basic
+ 
+local OeufsDropdown = T.Dropdown({
+    Text = "Sélectionnez un Oeuf",
+    Options = {Basic, Dead, Cosmic, Earth, Lava, Ocean, Sand, Rare, Robux, BeachDragon, WaterMenace, Sweet, Glacier, Jungle},
+    Callback = function(Value)
+        eggType = Value
+    end
+})
+ 
+local autoOpenActive = false
+ 
+local AutoOpenToggle = T.Toggle({
+    Text = "AutoEgg",
+    Callback = function(Value)
+        autoOpenActive = Value
+        if Value then
+            spawn(function()
+                while autoOpenActive do
+                    local args = {
+                        [1] = eggType,
+                        [2] = false
+                    }
+                    game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.EggService.RF.Purchase:InvokeServer(unpack(args))
+                    wait()
+                end
+            end)
+        end
+    end,
+    Enabled = false
+})
+ 
+local U = X.New({
+    Title = "Rebirth"
+})
+ 
+local autoRebirthActive = false
+ 
+local AutoRebirthToggle = U.Toggle({
+    Text = "AutoRebirth",
+    Callback = function(Value)
+        autoRebirthActive = Value
+        if Value then
+            spawn(function()
+                while autoRebirthActive do
+                    game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.RebirthService.RF.Rebirth:InvokeServer()
+                    wait()
+                end
+            end)
+        end
+    end,
+    Enabled = false
+})
+ 
+local C = X.New({
+    Title = "Island"
+})
+ 
+local Ile = "1"
+ 
+local IleDropdown = C.Dropdown({
+    Text = "Sélectionnez une Ile",
+    Options = {Earth, Beach, Magma, Corail, Cimtiere, Extraterrestre, Candy, Snow, Forest},
+    Callback = function(Value)
+        Ile = Value
+    end
+})
+ 
+local TeleportButton = C.Button({
+    Text = "Se téléporter",
+    Callback = function()
+        local islandSpawn = game:GetService("Workspace").Islands[Ile].Spawn
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = islandSpawn.CFrame
+    end
+})
+ 
+ 
+local I = X.New({
+    Title = "Player"
+})
+ 
+ 
+ 
+local SpeedDropdown = I.Dropdown({
+    Text = "Select Speed",
+    Options = {50, 60, 70, 80, 90, 100, 120, 140, 160, 180, 200},
+    Callback = function(Value)
+        Speed = Value
+    end
+})
+ 
+local TeleportButton = I.Button({
+    Text = "Change Speed",
+    Callback = function()
+         while wait() do 
+       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Speed
+         end
+end
+})
+ 
+ 
+local JumpDropdown = I.Dropdown({
+    Text = "Select JumpPower",
+    Options = {50, 60, 70, 80, 90, 100, 120, 140, 160, 180, 200},
+    Callback = function(Value)
+        Jump = Value
+    end
+})
+ 
+local TeleportButton = I.Button({
+    Text = "Change JumpPower",
+    Callback = function()
+       while wait() do 
+       game.Players.LocalPlayer.Character.Humanoid.JumpPower = Jump
+       end
+end
+})
