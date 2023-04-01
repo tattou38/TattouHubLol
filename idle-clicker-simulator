@@ -60,7 +60,7 @@ local Y = X.New({
 local autoFarmActive = false
  
 local AutoAttackToggle = Y.Toggle({
-    Text = "EL Auto Attacko",
+    Text = "Auto Click",
     Callback = function(Value)
         autoFarmActive = Value
         if Value then
@@ -75,7 +75,23 @@ local AutoAttackToggle = Y.Toggle({
     Enabled = false
 })
  
+ local autoDigActive = false
  
+local autoDigActive = Y.Toggle({
+    Text = "Auto Dig",
+    Callback = function(Value)
+       autoDigActive = Value
+        if Value then
+            spawn(function()
+                while autoDigActive do
+                  game:GetService("ReplicatedStorage").Packages._Index["sleitnick_comm@0.3.1"].comm.Client
+                    wait()
+                end
+            end)
+        end
+    end,
+    Enabled = false
+})
  
 local autoGiftActive = false
  
@@ -125,7 +141,7 @@ local T = X.New({
 local eggType = Basic
  
 local OeufsDropdown = T.Dropdown({
-    Text = "Sélectionnez un Oeuf",
+    Text = "Select an Egg",
     Options = {Basic, Dead, Cosmic, Earth, Lava, Ocean, Sand, Rare, Robux, BeachDragon, WaterMenace, Sweet, Glacier, Jungle},
     Callback = function(Value)
         eggType = Value
@@ -183,7 +199,7 @@ local C = X.New({
 local Ile = "1"
  
 local IleDropdown = C.Dropdown({
-    Text = "Sélectionnez une Ile",
+    Text = "Select an island",
     Options = {Earth, Beach, Magma, Corail, Cimtiere, Extraterrestre, Candy, Snow, Forest},
     Callback = function(Value)
         Ile = Value
@@ -191,7 +207,7 @@ local IleDropdown = C.Dropdown({
 })
  
 local TeleportButton = C.Button({
-    Text = "Se téléporter",
+    Text = "Teleport",
     Callback = function()
         local islandSpawn = game:GetService("Workspace").Islands[Ile].Spawn
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = islandSpawn.CFrame
